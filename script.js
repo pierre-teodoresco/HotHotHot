@@ -1,3 +1,18 @@
+/* Button */
+
+O_optionsBar = document.getElementById('options');
+O_optionsBar.querySelectorAll('a').forEach(function (element) {
+	element.addEventListener('click', function (event) {
+		Array.from(document.querySelectorAll('.active')).forEach(function(element) {
+			element.removeAttribute('class');
+		});
+		let S_sectionToDisplay = event.target.attributes.href.value.replace('#', '');
+		document.getElementById(S_sectionToDisplay).setAttribute('class', 'active');
+	})
+});
+
+/* Websocket */
+
 let socket = new WebSocket("wss://ws.hothothot.dog:9502");
 
 socket.onopen = function(event) {
@@ -8,24 +23,27 @@ socket.onmessage = function(event) {
 	alert("[message] : " + event.data);
 };
 
-function getQueryJSON() {
+/* Récupération des données du serveur avec fetch en attendant l'ouverture pour websocket */
+
+function getOutdoorSensorValue() {
 	fetch("https://hothothot.dog/api/capteurs/exterieur").then(function(data) {
-		data.json().then(function(json) {
-			console.log(json);
-			console.log(json.capteurs[0].Valeur);
-			return json;
+		data.json().then(function(json) { 
+			alertOutdoorSensors(json.capteurs[0].Valeur);
 		});	
 	});
+	console.log("REFRESH_OUT");
 }
 
-function getRandomArbitrary(min, max) {
-	return Math.floor(Math.random() * (max - min) + min);
+function getIndoorSensorValue() {
+	fetch("https://hothothot.dog/api/capteurs/interieur").then(function(data) {
+		data.json().then(function(json) {
+			alertIndoorSensors(json.capteurs[0].Valeur);
+		});	
+	});
+	console.log("REFRESH_IN");
 }
 
-var indoorInterval;
-
-function alertIndoorSensors() {
-	let val = getRandomArbitrary(-10, 60);
+function alertIndoorSensors(val) {
 
 	if (val < 0) {
 		alert("Canalisations gelées, appelez SOS plombier et mettez un bonnet !");
@@ -37,13 +55,10 @@ function alertIndoorSensors() {
 		alert("Appelez les pompiers ou arrêtez votre barbecue !");
 	}
 
-	console.log("temp : " + val);
+	document.getElementById("in-temp").innerText = val;
 }
 
-var outdoorInterval;
-
-function alertOutdoorSensors() {
-	let val = getRandomArbitrary(-20, 40);
+function alertOutdoorSensors(val) {
 
 	if (val < 0) {
 		alert("Banquise en vue !");
@@ -51,8 +66,8 @@ function alertOutdoorSensors() {
 		alert("Hot Hot Hot !");
 	}
 
-	console.log("temp : " + val);
+	document.getElementById("out-temp").innerText = val;
 }
 
-indoorInterval = setInterval(alertIndoorSensors, 2000);
-outdoorInterval = setInterval(alertOutdoorSensors, 2000);
+outdoorInterval = setInterval(getOutdoorSensorValue(), 10000);
+indoorInterval = setInterval(getIndoorSensorValue(), 10000);

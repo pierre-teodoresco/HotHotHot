@@ -37,13 +37,13 @@
             <div class="col l6 s12">
                 <div class="center-align">
                     <h4>Extérieur</h4>
-                    <h1>300°C</h1>
+                    <h1><span id="out-temp"></span>°C</h1>
                 </div>
             </div>
             <div class="col l6 s12">
                 <div class="center-align">
                     <h4>Intérieur</h4>
-                    <h1>30°C</h1>
+                    <h1><span id="in-temp"></span>°C</h1>
                 </div>
             </div>
         </div>
@@ -85,16 +85,5 @@
     </div>
 </div>
 
-<script>
-    O_optionsBar = document.getElementById('options');
-    O_optionsBar.querySelectorAll('a').forEach(function (element) {
-        element.addEventListener('click', function (event) {
-            Array.from(document.querySelectorAll('.active')).forEach(function(element) {
-                element.removeAttribute('class');
-            });
-            let S_sectionToDisplay = event.target.attributes.href.value.replace('#', '');
-            document.getElementById(S_sectionToDisplay).setAttribute('class', 'active');
-        })
-    });
-</script>
+<script src="script.js"></script>
 </body>
