@@ -13,15 +13,15 @@ O_optionsBar.querySelectorAll('a').forEach(function (element) {
 
 /* Websocket */
 
-let socket = new WebSocket("wss://ws.hothothot.dog:9502");
+// let socket = new WebSocket("wss://ws.hothothot.dog:9502");
 
-socket.onopen = function(event) {
-	alert("[open] Connexion established");
-};
+// socket.onopen = function(event) {
+// 	alert("[open] Connexion established");
+// };
 
-socket.onmessage = function(event) {
-	alert("[message] : " + event.data);
-};
+// socket.onmessage = function(event) {
+// 	alert("[message] : " + event.data);
+// };
 
 /* Récupération des données du serveur avec fetch en attendant l'ouverture pour websocket */
 
@@ -69,5 +69,10 @@ function alertOutdoorSensors(val) {
 	document.getElementById("out-temp").innerText = val;
 }
 
-outdoorInterval = setInterval(getOutdoorSensorValue(), 10000);
-indoorInterval = setInterval(getIndoorSensorValue(), 10000);
+getIndoorSensorValue();
+getOutdoorSensorValue();
+
+const timer = 60000;
+
+outdoorInterval = setInterval(getOutdoorSensorValue, timer);
+indoorInterval = setInterval(getIndoorSensorValue, timer);
