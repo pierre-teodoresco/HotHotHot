@@ -103,49 +103,6 @@ Lors de la réception des données des capter celle-ci devront être analysées 
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTgxNTgyMTk3N119
 -->
-Modifié le: vendredi 25 février 2022, 13:41
-Messages personnels
-
-
-Contacts
-
-
-Messages sélectionnés : 1 ×
-
-
-
-
-
-
-Contacts 0
-
-
-
-
-
-Paramètres
-
-	•	Contacts 
-	•	Demandes 0 
-Aucun contact
-
-
-
-Aucune demande de contact
-
-
-
-Demande de contact envoyée
-
-Espace personnel
-Enregistrer des brouillons, liens, note, etc. pour un usage ultérieur.
-
-
-Supprimer pour moi et et pour tous les autres
-Bloc Débloquer Supprimer Ajouter Supprimer Supprimer Envoyer une demande de contact Accepter et ajouter aux contacts Décliner OK Annuler
-
-
-
 
 
 
