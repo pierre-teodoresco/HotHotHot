@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+    <link rel="stylesheet" href="css/style.css">
     <script>
         $(document).ready(function () {
             $(".button-collapse").sideNav();
@@ -32,7 +32,7 @@
     <li><a href="#">Username</a></li>
 </ul>
 <div class="container" style="margin-bottom: 10px;">
-    <section id="temperatures">
+    <section id="temperatures"  class="active">
         <div class="row" style="padding-bottom: 20px;">
             <div class="col l6 s12">
                 <div class="center-align">
@@ -49,7 +49,7 @@
         </div>
     </section>
 
-    <section id="historic" class="hiddendiv">
+    <section id="historic">
         <table class="striped">
             <thead>
             <tr>
@@ -83,13 +83,17 @@
             <a href="#historic" class="btn z-depth-1">Historique</a>
         </div>
     </div>
-</div >
+</div>
 
 <script>
     O_optionsBar = document.getElementById('options');
     O_optionsBar.querySelectorAll('a').forEach(function (element) {
         element.addEventListener('click', function (event) {
-            Array.from(document.querySelectorAll('.active'))
+            Array.from(document.querySelectorAll('.active')).forEach(function(element) {
+                element.removeAttribute('class');
+            });
+            let S_sectionToDisplay = event.target.attributes.href.value.replace('#', '');
+            document.getElementById(S_sectionToDisplay).setAttribute('class', 'active');
         })
     });
 </script>
