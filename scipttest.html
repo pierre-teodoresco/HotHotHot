@@ -1,27 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <title>HotHotHot</title>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <nav class="nav-extended">
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" class="brand-logo" style="padding-left: 5px;">HotHotHot</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li>
+            <li><a href="#">Connexion</a></li>
+            <li><a href="#">Déconnexion</a></li>
+            <li><a href="#">Inscription</a></li>
         </ul>
     </div>
     <div class="nav-content">
         <ul class="tabs tabs-transparent">
-            <li class="tab"><a href="#test1">Test 1</a></li>
-            <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-            <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-            <li class="tab"><a href="#test4">Test 4</a></li>
+            <li class="tab"><a href="#sensors">Capteurs</a></li>
+            <li class="tab"><a class="active" href="#historic">Historique</a></li>
+            <li class="tab"><a href="#about">À propos</a></li>
         </ul>
     </div>
 </nav>
@@ -32,20 +32,63 @@
     <li><a href="collapsible.html">JavaScript</a></li>
 </ul>
 
-<div id="test1" class="col s12">Test 1</div>
-<div id="test2" class="col s12">Test 2</div>
-<div id="test3" class="col s12">Test 3</div>
-<div id="test4" class="col s12">Test 4</div>
+<div class="container" style="margin-bottom: 10px;">
+    <section id="sensors" class="active">
+        <div class="row" style="padding-bottom: 20px;">
+            <div class="col l6 s12">
+                <div class="center-align">
+                    <h4>Extérieur</h4>
+                    <h1>300°C</h1>
+                </div>
+            </div>
+            <div class="col l6 s12">
+                <div class="center-align">
+                    <h4>Intérieur</h4>
+                    <h1>30°C</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historic">
+        <table class="striped">
+            <thead>
+            <tr>
+                <th colspan="3" class="center"><strong>Historique</strong></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>MEASUREMENT</td>
+                <td>PLACE</td>
+                <td>TIME</td>
+            </tr>
+            <tr>
+                <td>MEASUREMENT</td>
+                <td>PLACE</td>
+                <td>TIME</td>
+            </tr>
+            <tr>
+                <td>MEASUREMENT</td>
+                <td>PLACE</td>
+                <td>TIME</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
 
 <script>
-    O_optionsBar = document.getElementById('options');
-    O_optionsBar.querySelectorAll('a').forEach(function (element) {
+    document.querySelectorAll('.nav-extended .nav-wrapper a').forEach(function (element) {
         element.addEventListener('click', function (event) {
+            /*
             Array.from(document.querySelectorAll('.active')).forEach(function (element) {
                 element.removeAttribute('class');
             });
             let S_sectionToDisplay = event.target.attributes.href.value.replace('#', '');
             document.getElementById(S_sectionToDisplay).setAttribute('class', 'active');
+            */
+            console.log(event.target.attributes.href.value);
         })
     });
 
@@ -61,9 +104,6 @@
         let tableBody = document.querySelector('#historic table tbody');
         tableBody.append(clonedRow);
     }
-
-    addEntryToHistory(50, 'extérieur', new Date().toLocaleString());
-    addEntryToHistory(50, 'extérieur', new Date().toLocaleString());
-    addEntryToHistory(50, 'extérieur', new Date().toLocaleString());
 </script>
 </body>
+</html>

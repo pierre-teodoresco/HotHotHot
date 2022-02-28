@@ -60,6 +60,22 @@ function alertIndoorSensors(val) {
 			'Appelez les pompiers ou arrêtez votre barbecue !');
 	}
 	document.getElementById("in-temp").innerText = val;
+
+	let minSpan = document.getElementById('min-temp-in');
+	let oldMinVal = parseInt(minSpan.innerText);
+	if (isNaN(oldMinVal)) {
+		minSpan.innerText = val;
+	} else if (oldMinVal < val) {
+		minSpan.innerText = val;
+	}
+
+	let maxSpan = document.getElementById('max-temp-in');
+	let oldMaxVal = parseInt(maxSpan.innerText);
+	if (isNaN(oldMaxVal)) {
+		maxSpan.innerText = val;
+	} else if (oldMaxVal > val) {
+		maxSpan.innerText = val;
+	}
 }
 
 function alertOutdoorSensors(val) {
@@ -71,6 +87,24 @@ function alertOutdoorSensors(val) {
 			'Hot Hot Hot !');
 	}
 	document.getElementById("out-temp").innerText = val;
+
+	updateMinMax();
+
+	let minSpan = document.getElementById('min-temp-in');
+	let oldMinVal = parseInt(minSpan.innerText);
+	if (isNaN(oldMinVal)) {
+		minSpan.innerText = val;
+	} else if (oldMinVal < val) {
+		minSpan.innerText = val;
+	}
+
+	let maxSpan = document.getElementById('max-temp-in');
+	let oldMaxVal = parseInt(maxSpan.innerText);
+	if (isNaN(oldMaxVal)) {
+		maxSpan.innerText = val;
+	} else if (oldMaxVal > val) {
+		maxSpan.innerText = val;
+	}
 }
 
 /* Gestion Historique */
