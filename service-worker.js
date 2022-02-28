@@ -15,7 +15,7 @@ self.addEventListener('install', (e) => {
             "scripts/",
             "service-worker.js",
             "css/",
-            "svgs/",
+            "images/",
             "node_modules/",
             "manifest.webmanifest",
             "package.json",
