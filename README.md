@@ -8,6 +8,7 @@ Les différents capteurs sont :
 * Humidité
 * Etat d'un périphérique
 * etc...
+
 L'application conserve un historique des données
 L'application peut, en fonction des données conseiller ou alerter
 
