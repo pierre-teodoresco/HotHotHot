@@ -15,14 +15,12 @@ self.addEventListener('install', (e) => {
             "scripts/",
             "service-worker.js",
             "css/",
-            "image/",
-            "node_modules/",
             "svgs/",
+            "node_modules/",
             "manifest.webmanifest",
             "package.json",
             "package-lock.json"
-            // ... ajouter les autres ressources à mettre en cache
-        ])), // à adapter à l'URL du projet
+        ])) // à adapter à l'URL du projet
     );
 });
 
