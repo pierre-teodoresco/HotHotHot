@@ -3,8 +3,8 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
     <link rel="stylesheet" href="css/style.css">
     <script>
         $(document).ready(function () {
@@ -16,7 +16,7 @@
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Logo</a>
+            <a href="#" class="brand-logo" style="padding-left: 5px;">HotHotHot</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#">S'Enregistrer</a></li>
@@ -32,7 +32,7 @@
     <li><a href="#">Username</a></li>
 </ul>
 <div class="container" style="margin-bottom: 10px;">
-    <section id="temperatures"  class="active">
+    <section id="temperatures" class="active">
         <div class="row" style="padding-bottom: 20px;">
             <div class="col l6 s12">
                 <div class="center-align">
@@ -52,26 +52,26 @@
     <section id="historic">
         <table class="striped">
             <thead>
-            <tr>
-                <th colspan="3" class="center"><strong>Historique</strong></th>
-            </tr>
+                <tr>
+                    <th colspan="3" class="center"><strong>Historique</strong></th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Température</td>
-                <td>Lieu</td>
-                <td>Date</td>
-            </tr>
-            <tr>
-                <td>30°C</td>
-                <td>Extérieur</td>
-                <td>20/07/2002</td>
-            </tr>
-            <tr>
-                <td>300°C</td>
-                <td>Interieur</td>
-                <td>20/07/2003</td>
-            </tr>
+                <tr>
+                    <td>MEASUREMENT</td>
+                    <td>PLACE</td>
+                    <td>TIME</td>
+                </tr>
+                <tr>
+                    <td>MEASUREMENT</td>
+                    <td>PLACE</td>
+                    <td>TIME</td>
+                </tr>
+                <tr>
+                    <td>MEASUREMENT</td>
+                    <td>PLACE</td>
+                    <td>TIME</td>
+                </tr>
             </tbody>
         </table>
     </section>
@@ -84,17 +84,41 @@
         </div>
     </div>
 </div>
+<template id="entry-template">
+    <tr>
+        <td>MEASUREMENT</td>
+        <td>PLACE</td>
+        <td>TIME</td>
+    </tr>
+</template>
 
 <script>
     O_optionsBar = document.getElementById('options');
     O_optionsBar.querySelectorAll('a').forEach(function (element) {
         element.addEventListener('click', function (event) {
-            Array.from(document.querySelectorAll('.active')).forEach(function(element) {
+            Array.from(document.querySelectorAll('.active')).forEach(function (element) {
                 element.removeAttribute('class');
             });
             let S_sectionToDisplay = event.target.attributes.href.value.replace('#', '');
             document.getElementById(S_sectionToDisplay).setAttribute('class', 'active');
         })
     });
+
+    function addEntryToHistory(temperature, place, dateTime) {
+        let template = document.getElementById('entry-template');
+        let clonedRow = document.importNode(template.content, true);
+
+        let cells = clonedRow.querySelectorAll('td');
+        cells[0].innerText = temperature + '°C';
+        cells[1].innerText = place;
+        cells[2].innerText = dateTime;
+
+        let tableBody = document.querySelector('#historic table tbody');
+        tableBody.append(clonedRow);
+    }
+
+    addEntryToHistory(50, 'extérieur', new Date().toLocaleString());
+    addEntryToHistory(50, 'extérieur', new Date().toLocaleString());
+    addEntryToHistory(50, 'extérieur', new Date().toLocaleString());
 </script>
 </body>
