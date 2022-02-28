@@ -1,32 +1,61 @@
-let socket = new WebSocket("wss://ws.hothothot.dog:9502");
+/* Buttons */
 
-socket.onopen = function(event) {
-	alert("[open] Connexion established");
-};
+O_optionsBar = document.getElementById('options');
+O_optionsBar.querySelectorAll('a').forEach(function (element) {
+	element.addEventListener('click', function (event) {
+		Array.from(document.querySelectorAll('.active')).forEach(function(element) {
+			element.removeAttribute('class');
+		});
+		let S_sectionToDisplay = event.target.attributes.href.value.replace('#', '');
+		document.getElementById(S_sectionToDisplay).setAttribute('class', 'active');
+	})
+});
 
-socket.onmessage = function(event) {
-	alert("[message] : " + event.data);
-};
+/* Websocket */
 
-function getQueryJSON() {
+// let socket = new WebSocket("wss://ws.hothothot.dog:9502");
+
+// socket.onopen = function(event) {
+// 	alert("[open] Connexion established");
+// };
+
+// socket.onmessage = function(event) {
+// 	alert("[message] : " + event.data);
+// };
+
+/* class Temperature */
+
+class Temperature {
+	constructor(val, sensor, date) {
+		this.val = val;
+		this.sensor = sensor;
+		this.date = date;
+	}
+}
+
+/* Récupération des données du serveur avec fetch en attendant l'ouverture pour websocket */
+
+function getOutdoorSensorValue() {
 	fetch("https://hothothot.dog/api/capteurs/exterieur").then(function(data) {
 		data.json().then(function(json) {
-			console.log(json);
-			console.log(json.capteurs[0].Valeur);
-			return json;
+			let val = json.capteurs[0].Valeur;
+			alertOutdoorSensors(val);
+			addEntryToHistory(new Temperature(val, "Exterieur", new Date().toLocaleString()));
 		});	
 	});
 }
 
-function getRandomArbitrary(min, max) {
-	return Math.floor(Math.random() * (max - min) + min);
+function getIndoorSensorValue() {
+	fetch("https://hothothot.dog/api/capteurs/interieur").then(function(data) {
+		data.json().then(function(json) {
+			let val = json.capteurs[0].Valeur;
+			alertIndoorSensors(val);
+			addEntryToHistory(new Temperature(val, "Intérieur", new Date().toLocaleString()));
+		});	
+	});
 }
 
-var indoorInterval;
-
-function alertIndoorSensors() {
-	let val = getRandomArbitrary(-10, 60);
-
+function alertIndoorSensors(val) {
 	if (val < 0) {
 		alert("Canalisations gelées, appelez SOS plombier et mettez un bonnet !");
 	} else if (val < 12) {
@@ -36,23 +65,57 @@ function alertIndoorSensors() {
 	} else if (val > 50) {
 		alert("Appelez les pompiers ou arrêtez votre barbecue !");
 	}
-
-	console.log("temp : " + val);
+	document.getElementById("in-temp").innerText = val;
 }
 
-var outdoorInterval;
-
-function alertOutdoorSensors() {
-	let val = getRandomArbitrary(-20, 40);
-
+function alertOutdoorSensors(val) {
 	if (val < 0) {
 		alert("Banquise en vue !");
 	} else if (val > 35) {
 		alert("Hot Hot Hot !");
 	}
-
-	console.log("temp : " + val);
+	document.getElementById("out-temp").innerText = val;
 }
 
-indoorInterval = setInterval(alertIndoorSensors, 2000);
-outdoorInterval = setInterval(alertOutdoorSensors, 2000);
+/* Gestion Historique */
+
+function addEntryToHistory(temp) {
+	let template = document.getElementById('entry-template');
+	let clonedRow = document.importNode(template.content, true);
+
+	let cells = clonedRow.querySelectorAll('td');
+	cells[0].innerText = temp.val + '°C';
+	cells[1].innerText = temp.sensor;
+	cells[2].innerText = temp.date;
+
+	let tableBody = document.querySelector('#historic table tbody');
+	tableBody.append(clonedRow);
+}
+
+/* Notifications */
+
+function notificationHandler() {
+	if (!"Notification" in window) {
+		console.log("Votre navigateur ne supporte pas les norifications");
+	} else if (Notification.permission === "granted") {
+		const notif = new Notification("Test", {body: "hello there"});
+	} else if (Notification.permission !== "denied" || Notification.permission === "default") {
+		Notification.requestPermission().then(function(result) {
+			if (result === "granted") {
+				const notif = new Notification("Test", {body: "hello there"});
+			}
+		});
+	}
+}
+
+/* main */
+
+notificationHandler();
+
+getIndoorSensorValue();
+getOutdoorSensorValue();
+
+const timer = 60000 * 20;
+
+outdoorInterval = setInterval(getOutdoorSensorValue, timer);
+indoorInterval = setInterval(getIndoorSensorValue, timer);
