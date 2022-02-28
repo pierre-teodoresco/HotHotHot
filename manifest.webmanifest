@@ -6,15 +6,15 @@
     "display": "fullscreen",
      "icon": [
      {
-        "src": "image/Cars.jpg",
+        "src": "svgs/hot-dog.png",
         "sizes": "256x256",
         "type": "image/jpg"
      },
      {
-         "src": "image/wouaf.png",
+         "src": "svgs/gauge.png",
          "sizes": "256x256",
          "type": "image/png"
      }
      ],
-     "background_color": "grey",
+     "background_color": "grey"
 }
