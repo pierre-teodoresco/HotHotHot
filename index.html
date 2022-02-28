@@ -7,10 +7,16 @@
     <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="svgs/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="svgs/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="svgs/favicon/favicon-16x16.png">
     <script defer src="scripts/navbar.js"></script>
+    <script defer src="scripts/fetch.js"></script>
+    <script defer src="scripts/temperature.js"></script>
+    <script defer src="scripts/notifications.js"></script>
+    <script defer src="scripts/historic.js"></script>
     <script defer src="scripts/script.js"></script>
-    <title>Title</title>
-    <link rel="manifest" href="manifest.webmanifest">
+    <title>HotHotHot</title>
 </head>
 
 <body>
@@ -47,14 +53,14 @@
                 <div class="center-align">
                     <h4>Extérieur</h4>
                     <h1><span id="out-temp"></span>°C</h1>
-                    <h5>Min:<span id="min-temp-out"></span> | Max:<span id="max-temp-out"></span></h5>
+                    <h5>Min: <span id="min-temp-out"></span> | Max: <span id="max-temp-out"></span></h5>
                 </div>
             </div>
             <div class="col l6 s12">
                 <div class="center-align">
                     <h4>Intérieur</h4>
                     <h1><span id="in-temp"></span>°C</h1>
-                    <h5>Min:<span id="min-temp-in"></span> | Max:<span id="max-temp-in"></span></h5>
+                    <h5>Min: <span id="min-temp-in"></span> | Max: <span id="max-temp-in"></span></h5>
                 </div>
             </div>
         </div>
@@ -69,9 +75,9 @@
             </thead>
             <tbody>
             <tr>
-                <td>MEASUREMENT</td>
-                <td>PLACE</td>
-                <td>TIME</td>
+                <td><input type="button" value="TEMPERATURE" id="historic-temp-sort"></td>
+                <td><input type="button" value="LIEU" id="historic-lieu-sort"></td>
+                <td><input type="button" value="DATE - HEURE" id="historic-date-sort"></td>
             </tr>
             </tbody>
         </table>
