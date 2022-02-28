@@ -7,12 +7,12 @@
      "icon": [
      {
         "src": "svgs/hot-dog.png",
-        "sizes": "256x256",
+        "sizes": "20x20",
         "type": "image/jpg"
      },
      {
          "src": "svgs/gauge.png",
-         "sizes": "256x256",
+         "sizes": "144x144",
          "type": "image/png"
      }
      ],
