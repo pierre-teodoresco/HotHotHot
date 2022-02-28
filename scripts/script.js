@@ -18,6 +18,19 @@ function updateMinMax(sensor, val) {
 	}
 }
 
+/* Permet de télécharger le site */
+
+if ('serviceWorker' in navigator) {
+
+	navigator.serviceWorker
+
+		.register('/HotHotHot/service-worker.js') // à adapter à l'URL du projet
+
+		.then(() => { console.log('Service Worker Registered'); });
+
+}
+
+
 /* Websocket */
 
 // let socket = new WebSocket("wss://ws.hothothot.dog:9502");
