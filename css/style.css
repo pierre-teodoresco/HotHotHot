@@ -1,3 +1,13 @@
+@keyframes slidein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
 section {
     display: none;
 }
@@ -5,3 +15,15 @@ section {
 .active {
     display: initial;
 }
+
+section.active {
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+@media (min-width: 993px) {
+    .sidenav-trigger {
+        display: none;
+    }
+}
+

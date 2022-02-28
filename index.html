@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="scripts/navbar.js"></script>
+    <script defer src="scripts/script.js"></script>
+    <title>Title</title>
+</head>
+
+<body>
+
+<nav class="nav-extended">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+        </ul>
+    </div>
+    <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a href="#sensors">Capteurs</a></li>
+            <li class="tab"><a href="#historic">Historique</a></li>
+            <li class="tab"><a href="#about">À propos</a></li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav hiddendiv" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">JavaScript</a></li>
+</ul>
+
+<div class="container" style="margin-bottom: 10px;">
+    <section id="sensors" class="active">
+        <div class="row" style="padding-bottom: 20px;">
+            <div class="col l6 s12">
+                <div class="center-align">
+                    <h4>Extérieur</h4>
+                    <h1><span id="out-temp"></span>°C</h1>
+                    <h5>Min:<span id="min-temp-out"></span> | Max:<span id="max-temp-out"></span></h5>
+                </div>
+            </div>
+            <div class="col l6 s12">
+                <div class="center-align">
+                    <h4>Intérieur</h4>
+                    <h1><span id="in-temp"></span>°C</h1>
+                    <h5>Min:<span id="min-temp-in"></span> | Max:<span id="max-temp-in"></span></h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historic">
+        <table class="striped">
+            <thead>
+            <tr>
+                <th colspan="3" class="center"><strong>Historique</strong></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>MEASUREMENT</td>
+                <td>PLACE</td>
+                <td>TIME</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<template id="entry-template">
+    <tr>
+        <td>MEASUREMENT</td>
+        <td>PLACE</td>
+        <td>TIME</td>
+    </tr>
+</template>
+
+</body>
+</html>
