@@ -10,3 +10,20 @@ function addEntryToHistory(temp) {
     let tableBody = document.querySelector('#historic table tbody');
     tableBody.append(clonedRow);
 }
+
+function sortButton() {
+    document.getElementById("svg-date").src = "../svgs/historic/caret-up.svg";
+
+    let state = "date-up";
+    document.getElementById("link-date-sort").onclick = function() {
+        if (state === "date-up") {
+            document.getElementById("svg-date").src = "../svgs/historic/caret-down.svg";
+            state = "date-down";
+        } else if (state === "date-down") {
+            document.getElementById("svg-date").src = "../svgs/historic/caret-up.svg";
+            state = "date-up";
+        }
+    }
+
+}
+sortButton()
