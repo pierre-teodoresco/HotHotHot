@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
@@ -16,12 +17,18 @@
 <nav class="nav-extended">
     <div class="nav-wrapper">
         <a href="#" class="brand-logo">Logo</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li>
+            <li><a href="#">Connexion</a></li>
+            <li><a href="#">Inscription</a></li>
+            <li><a href="#">Déconnexion</a></li>
         </ul>
+        <div class="right show-on-medium-and-down hide-on-med-and-up" style="padding-top: 7px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ei-user.svg/1200px-Ei-user.svg.png"
+                 alt="profile"
+                 width="48"
+                 height="48">
+        </div>
+
     </div>
     <div class="nav-content">
         <ul class="tabs tabs-transparent">
@@ -31,12 +38,6 @@
         </ul>
     </div>
 </nav>
-
-<ul class="sidenav hiddendiv" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">JavaScript</a></li>
-</ul>
 
 <div class="container" style="margin-bottom: 10px;">
     <section id="sensors" class="active">

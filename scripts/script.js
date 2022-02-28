@@ -5,7 +5,7 @@ function updateMinMax(sensor, val) {
 	let oldMinVal = parseInt(minSpan.innerText);
 	if (isNaN(oldMinVal)) {
 		minSpan.innerText = val;
-	} else if (oldMinVal < val) {
+	} else if (oldMinVal > val) {
 		minSpan.innerText = val;
 	}
 
@@ -13,7 +13,7 @@ function updateMinMax(sensor, val) {
 	let oldMaxVal = parseInt(maxSpan.innerText);
 	if (isNaN(oldMaxVal)) {
 		maxSpan.innerText = val;
-	} else if (oldMaxVal > val) {
+	} else if (oldMaxVal < val) {
 		maxSpan.innerText = val;
 	}
 }
