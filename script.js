@@ -47,22 +47,28 @@ function getIndoorSensorValue() {
 
 function alertIndoorSensors(val) {
 	if (val < 0) {
-		alert("Canalisations gelées, appelez SOS plombier et mettez un bonnet !");
+		notificationHandler('Alerte Intérieur : ' + val + '°C',
+			'Canalisation gelées, appelez SOS pompier et mettez un bonnet !');
 	} else if (val < 12) {
-		alert("Montez le chauffage ou mettez un gros pull !");
+		notificationHandler('Alerte Intérieur : ' + val + '°C',
+			'Montez le chauffage ou mettez un gros pull !');
 	} else if (val > 22) {
-		alert("Baissez le chauffage !");
+		notificationHandler('Alerte Intérieur : ' + val + '°C',
+			'Baissez le chauffage !');
 	} else if (val > 50) {
-		alert("Appelez les pompiers ou arrêtez votre barbecue !");
+		notificationHandler('Alerte Intérieur : ' + val + '°C',
+			'Appelez les pompiers ou arrêtez votre barbecue !');
 	}
 	document.getElementById("in-temp").innerText = val;
 }
 
 function alertOutdoorSensors(val) {
 	if (val < 0) {
-		alert("Banquise en vue !");
+		notificationHandler('Alerte Extérieur : ' + val + '°C',
+			'Banquise en vue !');
 	} else if (val > 35) {
-		alert("Hot Hot Hot !");
+		notificationHandler('Alerte Extérieur : ' + val + '°C',
+			'Hot Hot Hot !');
 	}
 	document.getElementById("out-temp").innerText = val;
 }
@@ -84,23 +90,21 @@ function addEntryToHistory(temp) {
 
 /* Notifications */
 
-function notificationHandler() {
+function notificationHandler(title, message) {
 	if (!"Notification" in window) {
 		console.log("Votre navigateur ne supporte pas les norifications");
 	} else if (Notification.permission === "granted") {
-		const notif = new Notification("Test", {body: "hello there"});
+		const notif = new Notification(title, {body: message});
 	} else if (Notification.permission !== "denied" || Notification.permission === "default") {
 		Notification.requestPermission().then(function(result) {
 			if (result === "granted") {
-				const notif = new Notification("Test", {body: "hello there"});
+				const notif = new Notification(title, {body: message});
 			}
 		});
 	}
 }
 
 /* main */
-
-notificationHandler();
 
 getIndoorSensorValue();
 getOutdoorSensorValue();
