@@ -3,6 +3,19 @@ var maxIn;
 var minOut;
 var maxOut;
 
+/* Permet de télécharger le site */
+
+if ('serviceWorker' in navigator) {
+
+	navigator.serviceWorker
+
+		.register('/HotHotHot/service-worker.js') // à adapter à l'URL du projet
+
+		.then(() => { console.log('Service Worker Registered'); });
+
+}
+
+
 /* Button */
 
 O_optionsBar = document.getElementById('options');
