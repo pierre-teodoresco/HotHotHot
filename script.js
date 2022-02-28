@@ -1,4 +1,4 @@
-/* Button */
+/* Buttons */
 
 O_optionsBar = document.getElementById('options');
 O_optionsBar.querySelectorAll('a').forEach(function (element) {
@@ -43,7 +43,6 @@ function getOutdoorSensorValue() {
 			addEntryToHistory(new Temperature(val, "Exterieur", new Date().toLocaleString()));
 		});	
 	});
-	console.log("REFRESH_OUT");
 }
 
 function getIndoorSensorValue() {
@@ -54,7 +53,6 @@ function getIndoorSensorValue() {
 			addEntryToHistory(new Temperature(val, "Intérieur", new Date().toLocaleString()));
 		});	
 	});
-	console.log("REFRESH_IN");
 }
 
 function alertIndoorSensors(val) {
@@ -94,12 +92,30 @@ function addEntryToHistory(temp) {
 	tableBody.append(clonedRow);
 }
 
+/* Notifications */
+
+function notificationHandler() {
+	if (!"Notification" in window) {
+		console.log("Votre navigateur ne supporte pas les norifications");
+	} else if (Notification.permission === "granted") {
+		const notif = new Notification("Test", {body: "hello there"});
+	} else if (Notification.permission !== "denied" || Notification.permission === "default") {
+		Notification.requestPermission().then(function(result) {
+			if (result === "granted") {
+				const notif = new Notification("Test", {body: "hello there"});
+			}
+		});
+	}
+}
+
 /* main */
+
+notificationHandler();
 
 getIndoorSensorValue();
 getOutdoorSensorValue();
 
-const timer = 60000;
+const timer = 60000 * 20;
 
 outdoorInterval = setInterval(getOutdoorSensorValue, timer);
 indoorInterval = setInterval(getIndoorSensorValue, timer);
