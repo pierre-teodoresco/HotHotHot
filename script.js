@@ -1,15 +1,5 @@
 /* Buttons */
 
-O_optionsBar = document.getElementById('options');
-O_optionsBar.querySelectorAll('a').forEach(function (element) {
-	element.addEventListener('click', function (event) {
-		Array.from(document.querySelectorAll('.active')).forEach(function(element) {
-			element.removeAttribute('class');
-		});
-		let S_sectionToDisplay = event.target.attributes.href.value.replace('#', '');
-		document.getElementById(S_sectionToDisplay).setAttribute('class', 'active');
-	})
-});
 
 /* Websocket */
 
@@ -115,7 +105,7 @@ notificationHandler();
 getIndoorSensorValue();
 getOutdoorSensorValue();
 
-const timer = 60000 * 20;
+const timer = 60000 * 0.5;
 
 outdoorInterval = setInterval(getOutdoorSensorValue, timer);
 indoorInterval = setInterval(getIndoorSensorValue, timer);
