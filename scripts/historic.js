@@ -69,7 +69,7 @@ function getTempArray() {
     let cpt = 0;
     let val, sensor, date;
     for (let i = 3; i < table.length; ++i) {
-        if (cpt === 1) {
+        if (cpt === 0) {
             val = table[i].innerHTML;
             if (val.length === 4) {
                 val = val.substring(0, 2);
@@ -81,8 +81,7 @@ function getTempArray() {
         } else if (cpt === 1) {
             sensor = table[i].innerHTML;
         } else if (cpt === 2) {
-            date = new Date();
-            date.parse(table[i].innerHTML);
+            date = new Date(table[i].innerHTML);
         } else {
             values.push(new Temperature(val, sensor, date));
             cpt = 0;
