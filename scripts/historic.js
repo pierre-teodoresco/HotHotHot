@@ -53,9 +53,21 @@ function sortHandler() {
     /* SVG on sensor col */
     document.getElementById("link-sensor-sort").onclick = function() {
         if (state === "sensor-up") {
+            // Handle sorting
+            let historic = getTempArray();
+            historic = sortBySensor(historic, false);
+            addAllEntryToHistory(historic);
+
+            // Handle svg
             document.getElementById("svg-sensor").src = "../images/historic/caret-down.svg";
             state = "sensor-down";
         } else {
+            // Handle sorting
+            let historic = getTempArray();
+            historic = sortBySensor(historic, true);
+            addAllEntryToHistory(historic);
+
+            // Handle svg
             resetSvg();
             document.getElementById("svg-sensor").src = "../images/historic/caret-up.svg";
             state = "sensor-up";
@@ -66,9 +78,21 @@ function sortHandler() {
     document.getElementById("link-date-sort").onclick = function() {
         getTempArray();
         if (state === "date-up") {
+            // Handle sorting
+            let historic = getTempArray();
+            historic = sortByDate(historic, false);
+            addAllEntryToHistory(historic);
+
+            // Handle svg
             document.getElementById("svg-date").src = "../images/historic/caret-down.svg";
             state = "date-down";
         } else {
+            // Handle sorting
+            let historic = getTempArray();
+            historic = sortByDate(historic, true);
+            addAllEntryToHistory(historic);
+
+            // Handle svg
             resetSvg();
             document.getElementById("svg-date").src = "../images/historic/caret-up.svg";
             state = "date-up";
@@ -134,12 +158,62 @@ function sortByTemp(arr, ascending) {
             } else {
                 return 0;
             }
-        })
+        });
     } else {
         arr.sort(function(a, b) {
             if (a.val < b.val) {
                 return 1;
             } else if (a.val > b.val) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+    }
+    return arr;
+}
+
+function sortBySensor(arr, ascending) {
+    if (ascending) {
+        arr.sort(function(a, b) {
+            if (a.sensor === 'Intérieur' && b.sensor === 'Extérieur') {
+                return -1;
+            } else if (a.sensor === 'Extérieur' && b.sensor === 'Intérieur') {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+    } else {
+        arr.sort(function(a, b) {
+            if (a.sensor === 'Intérieur' && b.sensor === 'Extérieur') {
+                return 1;
+            } else if (a.sensor === 'Extérieur' && b.sensor === 'Intérieur') {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+    }
+    return arr;
+}
+
+function sortByDate(arr, ascending) {
+    if (ascending) {
+        arr.sort(function(a, b) {
+            if (a.date < b.date) {
+                return -1;
+            } else if (a.date > b.date) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+    } else {
+        arr.sort(function(a, b) {
+            if (a.date < b.date) {
+                return 1;
+            } else if (a.date > b.date) {
                 return -1;
             } else {
                 return 0;
