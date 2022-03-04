@@ -114,7 +114,7 @@ function getTempArray() {
             let month = parseInt(table[i].innerHTML.substring(3, 5));
             let year = parseInt(table[i].innerHTML.substring(6, 10));
             // month is indexed from 0, so we need to subtract 1
-            let date = new Date(year, month - 1, day);
+            date = new Date(year, month - 1, day);
             values.push(new Temperature(val, sensor, date));
             cpt = 0;
         }
