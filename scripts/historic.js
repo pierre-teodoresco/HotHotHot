@@ -5,7 +5,7 @@ function addEntryToHistory(temp) {
     let cells = clonedRow.querySelectorAll('td');
     cells[0].innerText = temp.val + '°C';
     cells[1].innerText = temp.sensor;
-    cells[2].innerText = temp.date.toLocaleDateString('en-GB');
+    cells[2].innerText = temp.date.toLocaleString();
 
     let tableBody = document.querySelector('#historic table tbody');
     tableBody.append(clonedRow);
@@ -137,8 +137,11 @@ function getTempArray() {
             let day = parseInt(table[i].innerHTML.substring(0, 2));
             let month = parseInt(table[i].innerHTML.substring(3, 5));
             let year = parseInt(table[i].innerHTML.substring(6, 10));
+            let hour = parseInt(table[i].innerHTML.substring(12, 14));
+            let min = parseInt(table[i].innerHTML.substring(15, 17));
+            let sec = parseInt(table[i].innerHTML.substring(18, 20));
             // month is indexed from 0, so we need to subtract 1
-            date = new Date(year, month - 1, day);
+            date = new Date(year, month - 1, day, hour, min, sec);
             values.push(new Temperature(val, sensor, date));
             cpt = 0;
         }
