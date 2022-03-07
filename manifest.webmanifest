@@ -8,7 +8,7 @@
      {
          "src": "svgs/favicon/favicon.io",
          "sizes": "16x16",
-         "type:" "image/webp"
+         "type:": "image/webp"
      }
      ],
      "background_color": "grey"
