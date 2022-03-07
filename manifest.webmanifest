@@ -1,12 +1,12 @@
 {
-    "start_url": "index.html",
+    "start_url": "/index.html",
     "name": "HotHotHotAPP",
     "short_name": "HotHotHot",
     "description": "HotHotHot est une bonne application d indication de temperature",
     "display": "fullscreen",
      "icon": [
      {
-         "src": "svgs/144x144.png",
+         "src": "/svgs/144x144.png",
          "sizes": "144x144",
          "type:": "image/png",
          "purpose": "any"
