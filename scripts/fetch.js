@@ -3,7 +3,7 @@ function getOutdoorSensorValue() {
         data.json().then(function(json) {
             let val = json.capteurs[0].Valeur;
             alertOutdoorSensors(val);
-            addEntryToHistory(new Temperature(val, "Extérieur", new Date()));
+            addEntryToHistory(new Temperature(val, "Extérieur", new Date()), true);
         });
     });
 }
@@ -13,7 +13,7 @@ function getIndoorSensorValue() {
         data.json().then(function(json) {
             let val = json.capteurs[0].Valeur;
             alertIndoorSensors(val);
-            addEntryToHistory(new Temperature(val, "Intérieur", new Date()));
+            addEntryToHistory(new Temperature(val, "Intérieur", new Date()), true);
         });
     });
 }
