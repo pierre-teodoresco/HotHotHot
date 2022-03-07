@@ -6,9 +6,9 @@
     "display": "fullscreen",
      "icon": [
      {
-         "src": "svgs/favicon/favicon.io",
+         "src": "svgs/144x144.png",
          "sizes": "144x144",
-         "type:": "image/webp"
+         "type:": "image/png"
      }
      ],
      "background_color": "grey"
