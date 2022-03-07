@@ -7,8 +7,9 @@
      "icon": [
      {
          "src": "/HotHotHot/svgs/144x144.png",
-         "sizes": "any",
-         "type:": "image/png"
+         "sizes": "144x144",
+         "type:": "image/png",
+         "purpose": "any"
      }],
      "background_color": "grey"
 }
