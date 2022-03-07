@@ -3,6 +3,7 @@ let state = "date-down";
 let ascending = false;
 
 function addEntryToHistory(temp, needSorting) {
+    console.log('added entry');
     let template = document.getElementById('entry-template');
     let clonedRow = document.importNode(template.content, true);
 
@@ -20,11 +21,8 @@ function addEntryToHistory(temp, needSorting) {
 }
 
 function clearHistory() {
-    let row = document.querySelectorAll('td');
-    for (let i = 0; i < row.length; i++) {
-        if (row[i].getAttribute('class') === 'historic-title') {
-            continue;
-        }
+    let row = document.querySelectorAll('#historic tr');
+    for (let i = 1; i < row.length; i++) {
         row[i].remove();
     }
 }
