@@ -6,7 +6,7 @@
     "display": "fullscreen",
      "icon": [
      {
-         "src": "svgs/144x144.png",
+         "src": "/HotHotHot/svgs/144x144.png",
          "sizes": "any",
          "type:": "image/png"
      }],
