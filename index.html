@@ -16,6 +16,7 @@
     <script defer src="scripts/temperature.js"></script>
     <script defer src="scripts/notifications.js"></script>
     <script defer src="scripts/historic.js"></script>
+    <script defer src="scripts/websocket.js"></script>
     <script defer src="scripts/script.js"></script>
     <title>HotHotHot</title>
 </head>
@@ -77,23 +78,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
-                    <div>
-                        <a href="#sort-temp" id="historic-temp-sort">TEMPERATURE</a>
-                        <img src="" alt="">
+            <tr id="table-title-row">
+                <td class="historic-title">
+                    <div id="table-temp-row">
+                        <a href="#" id="link-temp-sort">TEMPERATURE</a>
+                        <img src="" id="svg-temp" alt="">
                     </div>
                 </td>
-                <td>
-                    <div>
-                        <a href="#sort-lieu" id="historic-lieu-sort">LIEU</a>
-                        <img src="" alt="">
+                <td class="historic-title">
+                    <div id="table-lieu-row">
+                        <a href="#" id="link-sensor-sort">CAPTEUR</a>
+                        <img src="" id="svg-sensor" alt="">
                     </div>
                 </td>
-                <td>
-                    <div>
-                        <a href="#sort-date" id="historic-date-sort">DATE</a>
-                        <img src="" alt="">
+                <td class="historic-title">
+                    <div id="table-date-row">
+                        <a href="#" id="link-date-sort">DATE</a>
+                        <img src="" id="svg-date" alt="">
                     </div>
                 </td>
             </tr>

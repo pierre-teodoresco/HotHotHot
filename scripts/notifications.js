@@ -2,11 +2,17 @@ function notificationHandler(title, message) {
     if (!"Notification" in window) {
         console.log("Votre navigateur ne supporte pas les norifications");
     } else if (Notification.permission === "granted") {
-        const notif = new Notification(title, {body: message});
+        const notif = new Notification(title, {
+            icon : "../images/hot-dog.png",
+            body: message,
+        });
     } else if (Notification.permission !== "denied" || Notification.permission === "default") {
         Notification.requestPermission().then(function(result) {
             if (result === "granted") {
-                const notif = new Notification(title, {body: message});
+                const notif = new Notification(title, {
+                    icon : "../images/hot-dog.png",
+                    body: message,
+                });
             }
         });
     }
