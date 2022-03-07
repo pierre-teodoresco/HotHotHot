@@ -5,15 +5,10 @@
     "description": "HotHotHot est une bonne application d indication de température",
     "display": "fullscreen",
      "icon": [
-//      {
-//         "src": "svgs/hot-dog.png",
-//         "sizes": "20x20",
-//         "type": "image/jpg"
-//      },
      {
-         "src": "svgs/144x144.png",
-         "sizes": "144x144",
-         "type": "image/png"
+         "src": "svgs/favicon/favicon.io",
+         "sizes": "16x16"
+         "type:" "image/webp"
      }
      ],
      "background_color": "grey"
