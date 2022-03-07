@@ -4,6 +4,7 @@ function getOutdoorSensorValue() {
             let val = json.capteurs[0].Valeur;
             alertOutdoorSensors(val);
             addEntryToHistory(new Temperature(val, "Extérieur", new Date()), true);
+            graphHistory(graph);
         });
     });
 }
@@ -14,6 +15,7 @@ function getIndoorSensorValue() {
             let val = json.capteurs[0].Valeur;
             alertIndoorSensors(val);
             addEntryToHistory(new Temperature(val, "Intérieur", new Date()), true);
+            graphHistory(graph);
         });
     });
 }

@@ -230,7 +230,6 @@ function sortByDate(arr) {
 
 function sortHistory() {
     let historic = getTempArray();
-
     if (sortingState === 0) {
         sortByDate(historic, ascending);
     } else if (sortingState === 1) {
@@ -249,4 +248,49 @@ function addAllEntryToHistory(arr) {
     arr.forEach(function(element) {
         addEntryToHistory(new Temperature(element.val, element.sensor, element.date), false);
     })
+}
+
+/* Graphic usign Chart.js */
+
+function createGraph(){
+    let ctx = document.getElementById("graph").getContext("2d")
+    return new Chart(ctx);
+}
+
+function graphHistory(Graph){
+    let TableHistory = getTempArray();
+    console.log(TableHistory);
+
+    let data = {
+        labels : [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+        datasets: [
+            {
+                label : 'Extérieur',
+                backgroundColor : '#ff0000',
+                data: []
+            },
+            {
+                label: 'Intérieur',
+                backgroundColor : '#0033ff',
+                data: []
+            }
+        ]
+    }
+    let options = {
+        scales: {
+            y:
+            {
+                suggestedMin: -5,
+                suggestedMax: 35
+            }
+        }
+    }
+    let config = {
+        type: 'line',
+        data : data,
+        options: options
+    }
+    Graph.config = config;
+    Graph.options = options;
+    Graph.data = data;
 }
