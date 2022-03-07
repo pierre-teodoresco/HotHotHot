@@ -4,13 +4,15 @@ function notificationHandler(title, message) {
     } else if (Notification.permission === "granted") {
         const notif = new Notification(title, {
             icon : "../images/hot-dog.png",
-            body: message});
+            body: message,
+        });
     } else if (Notification.permission !== "denied" || Notification.permission === "default") {
         Notification.requestPermission().then(function(result) {
             if (result === "granted") {
                 const notif = new Notification(title, {
                     icon : "../images/hot-dog.png",
-                    body: message});
+                    body: message,
+                });
             }
         });
     }
