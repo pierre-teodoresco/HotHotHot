@@ -1,4 +1,8 @@
-function addEntryToHistory(temp) {
+let sortingState = 0;
+let state = "date-down";
+let ascending = false;
+
+function addEntryToHistory(temp, needSorting) {
     let template = document.getElementById('entry-template');
     let clonedRow = document.importNode(template.content, true);
 
@@ -9,6 +13,10 @@ function addEntryToHistory(temp) {
 
     let tableBody = document.querySelector('#historic table tbody');
     tableBody.append(clonedRow);
+
+    if (needSorting) {
+        sortHistory();
+    }
 }
 
 function clearHistory() {
@@ -21,27 +29,24 @@ function clearHistory() {
     }
 }
 
-let state = "date-down";
-
 function sortHandler() {
     document.getElementById("svg-date").src = "../images/historic/caret-down.svg";
 
     /* SVG on temp col */
     document.getElementById("link-temp-sort").onclick = function() {
+        sortingState = 1;
         if (state === "temp-up") {
             // Handle sorting
-            let historic = getTempArray();
-            historic = sortByTemp(historic, false);
-            addAllEntryToHistory(historic);
+            ascending = true;
+            sortHistory(ascending);
 
             // Handle svg
             document.getElementById("svg-temp").src = "../images/historic/caret-down.svg";
             state = "temp-down";
         } else {
             // Handle sorting
-            let historic = getTempArray();
-            historic = sortByTemp(historic, true);
-            addAllEntryToHistory(historic);
+            ascending = false;
+            sortHistory(ascending);
 
             // Handle svg
             resetSvg();
@@ -52,20 +57,19 @@ function sortHandler() {
 
     /* SVG on sensor col */
     document.getElementById("link-sensor-sort").onclick = function() {
+        sortingState = 2;
         if (state === "sensor-up") {
             // Handle sorting
-            let historic = getTempArray();
-            historic = sortBySensor(historic, false);
-            addAllEntryToHistory(historic);
+            ascending = true;
+            sortHistory(ascending);
 
             // Handle svg
             document.getElementById("svg-sensor").src = "../images/historic/caret-down.svg";
             state = "sensor-down";
         } else {
             // Handle sorting
-            let historic = getTempArray();
-            historic = sortBySensor(historic, true);
-            addAllEntryToHistory(historic);
+            ascending = false;
+            sortHistory(ascending);
 
             // Handle svg
             resetSvg();
@@ -76,21 +80,19 @@ function sortHandler() {
 
     /* SVG on date col */
     document.getElementById("link-date-sort").onclick = function() {
-        getTempArray();
+        sortingState = 0;
         if (state === "date-up") {
             // Handle sorting
-            let historic = getTempArray();
-            historic = sortByDate(historic, false);
-            addAllEntryToHistory(historic);
+            ascending = true;
+            sortHistory(ascending);
 
             // Handle svg
             document.getElementById("svg-date").src = "../images/historic/caret-down.svg";
             state = "date-down";
         } else {
             // Handle sorting
-            let historic = getTempArray();
-            historic = sortByDate(historic, true);
-            addAllEntryToHistory(historic);
+            ascending = false;
+            sortHistory(ascending);
 
             // Handle svg
             resetSvg();
@@ -140,7 +142,7 @@ function getTempArray() {
             let hour = parseInt(table[i].innerHTML.substring(12, 14));
             let min = parseInt(table[i].innerHTML.substring(15, 17));
             let sec = parseInt(table[i].innerHTML.substring(18, 20));
-            // month is indexed from 0, so we need to subtract 1
+            // month are indexed from 0, so we need to subtract 1
             date = new Date(year, month - 1, day, hour, min, sec);
             values.push(new Temperature(val, sensor, date));
             cpt = 0;
@@ -151,7 +153,7 @@ function getTempArray() {
 
 /* Sorting */
 
-function sortByTemp(arr, ascending) {
+function sortByTemp(arr) {
     if (ascending) {
         arr.sort(function(a, b) {
             if (a.val < b.val) {
@@ -176,7 +178,7 @@ function sortByTemp(arr, ascending) {
     return arr;
 }
 
-function sortBySensor(arr, ascending) {
+function sortBySensor(arr) {
     if (ascending) {
         arr.sort(function(a, b) {
             if (a.sensor === 'Intérieur' && b.sensor === 'Extérieur') {
@@ -201,7 +203,7 @@ function sortBySensor(arr, ascending) {
     return arr;
 }
 
-function sortByDate(arr, ascending) {
+function sortByDate(arr) {
     if (ascending) {
         arr.sort(function(a, b) {
             if (a.date < b.date) {
@@ -224,6 +226,20 @@ function sortByDate(arr, ascending) {
         });
     }
     return arr;
+}
+
+function sortHistory() {
+    let historic = getTempArray();
+
+    if (sortingState === 0) {
+        sortByDate(historic, ascending);
+    } else if (sortingState === 1) {
+        sortByTemp(historic, ascending);
+    } else if (sortingState === 2) {
+        sortBySensor(historic, ascending);
+    }
+
+    addAllEntryToHistory(historic);
 }
 
 /* Push into history */
@@ -231,6 +247,6 @@ function sortByDate(arr, ascending) {
 function addAllEntryToHistory(arr) {
     clearHistory();
     arr.forEach(function(element) {
-        addEntryToHistory(new Temperature(element.val, element.sensor, element.date));
+        addEntryToHistory(new Temperature(element.val, element.sensor, element.date), false);
     })
 }
