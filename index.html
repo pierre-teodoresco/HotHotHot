@@ -7,9 +7,9 @@
     <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="svgs/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="svgs/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="svgs/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
     <link rel="manifest" href="manifest.webmanifest">
     <script defer src="scripts/pagination.js"></script>
     <script defer src="scripts/navbar.js"></script>
@@ -17,6 +17,7 @@
     <script defer src="scripts/temperature.js"></script>
     <script defer src="scripts/notifications.js"></script>
     <script defer src="scripts/historic.js"></script>
+    <script defer src="scripts/websocket.js"></script>
     <script defer src="scripts/script.js"></script>
     <title>HotHotHot</title>
 </head>
@@ -26,7 +27,7 @@
 <nav class="nav-extended">
     <div class="nav-wrapper">
         <div>
-            <img src="svgs/hot-dog.png" alt="logo" class="brand-logo" height="40" width="40" style="margin: 10px;">
+            <img src="images/hot-dog.png" alt="logo" class="brand-logo" height="40" width="40" style="margin: 10px;">
         </div>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="#">Connexion</a></li>
@@ -77,23 +78,23 @@
         <h2 class="center">Historique</h2>
         <table class="striped" style="margin-bottom: 20px">
             <tbody>
-            <tr>
-                <td>
-                    <div>
-                        <a href="#sort-temp" id="historic-temp-sort">TEMPERATURE</a>
-                        <img src="" alt="">
+            <tr id="table-title-row">
+                <td class="historic-title">
+                    <div id="table-temp-row">
+                        <a href="#" id="link-temp-sort">TEMPERATURE</a>
+                        <img src="" id="svg-temp" alt="">
                     </div>
                 </td>
-                <td>
-                    <div>
-                        <a href="#sort-lieu" id="historic-lieu-sort">LIEU</a>
-                        <img src="" alt="">
+                <td class="historic-title">
+                    <div id="table-lieu-row">
+                        <a href="#" id="link-sensor-sort">CAPTEUR</a>
+                        <img src="" id="svg-sensor" alt="">
                     </div>
                 </td>
-                <td>
-                    <div>
-                        <a href="#sort-date" id="historic-date-sort">DATE</a>
-                        <img src="" alt="">
+                <td class="historic-title">
+                    <div id="table-date-row">
+                        <a href="#" id="link-date-sort">DATE</a>
+                        <img src="" id="svg-date" alt="">
                     </div>
                 </td>
             </tr>
@@ -119,7 +120,7 @@
         <div class="row" style="padding-bottom: 20px;">
             <div class="col l4 m6 s12">
                 <div class="center-align">
-                    <img src="svgs/marte.webp" alt="" class="card-image" width="128" height="128"
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
                          style="border-radius: 50%;">
                     <h4>Le chien</h4>
                     <h5>Product owner</h5>
@@ -127,33 +128,33 @@
             </div>
             <div class="col l4 m6 s12">
                 <div class="center-align">
-                    <img src="svgs/marte.webp" alt="" class="card-image" width="128" height="128"
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
                          style="border-radius: 50%;">
-                    <h3>Le chien</h3>
+                    <h4>Le chien</h4>
                     <h5>Product owner</h5>
                 </div>
             </div>
             <div class="col l4 m6 s12">
                 <div class="center-align">
-                    <img src="svgs/marte.webp" alt="" class="card-image" width="128" height="128"
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
                          style="border-radius: 50%;">
-                    <h3>Le chien</h3>
+                    <h4>Le chien</h4>
                     <h5>Product owner</h5>
                 </div>
             </div>
             <div class="col l4 m6 s12 push-l2">
                 <div class="center-align">
-                    <img src="svgs/marte.webp" alt="" class="card-image" width="128" height="128"
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
                          style="border-radius: 50%;">
-                    <h3>Le chien</h3>
+                    <h4>Le chien</h4>
                     <h5>Product owner</h5>
                 </div>
             </div>
             <div class="col l4 m6 s12 push-l2 push-m3">
                 <div class="center-align">
-                    <img src="svgs/marte.webp" alt="" class="card-image" width="128" height="128"
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
                          style="border-radius: 50%;">
-                    <h3>Le chien</h3>
+                    <h4>Le chien</h4>
                     <h5>Product owner</h5>
                 </div>
             </div>

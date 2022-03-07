@@ -1,7 +1,19 @@
 class Temperature {
     constructor(val, sensor, date) {
-        this.val = val;
-        this.sensor = sensor;
-        this.date = date;
+        this._val = val;
+        this._sensor = sensor;
+        this._date = date;
+    };
+
+    get val() {
+        return this._val;
+    }
+
+    get sensor() {
+        return this._sensor;
+    }
+
+    get date() {
+        return this._date;
     }
 }
