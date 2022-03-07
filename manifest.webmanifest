@@ -4,6 +4,7 @@
     "short_name": "HotHotHot",
     "description": "HotHotHot est une bonne application d indication de température",
     "display": "fullscreen",
+    "orientation": "any",
      "icon": [
      {
          "src": "svgs/144x144.png",
