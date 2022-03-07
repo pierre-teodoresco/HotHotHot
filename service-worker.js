@@ -11,7 +11,7 @@
 self.addEventListener('install', e => {
     e.waitUntil(
         caches.open('HotHotHot').then(cache => {
-            cache.addAll([
+            return cache.addAll([
                 "index.html",
                 "scripts/",
                 "service-worker.js",
