@@ -15,7 +15,7 @@ self.addEventListener('install', e => {
                 "index.html",
                 "scripts/",
                 "css/",
-                "svgs/",
+                "images/",
                 "node_modules/"
             ]);
         })// à adapter à l'URL du projet

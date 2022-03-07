@@ -6,7 +6,7 @@
     "display": "fullscreen",
      "icons": [
      {
-         "src": "/HotHotHot/svgs/favicon/android-chrome-192x192.png",
+         "src": "/HotHotHot/images/favicon/android-chrome-192x192.png",
          "sizes": "192x192",
          "type:": "image/png",
          "purpose": "any"
