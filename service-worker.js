@@ -11,14 +11,12 @@
 self.addEventListener('install', e => {
     e.waitUntil(
         caches.open('HotHotHot').then(cache => {
-            return cache.addAll([
+            cache.addAll([
                 "index.html",
                 "scripts/",
-                "service-worker.js",
                 "css/",
                 "svgs/",
-                "node_modules/",
-                "manifest.webmanifest"
+                "node_modules/"
             ]);
         })// à adapter à l'URL du projet
     );
