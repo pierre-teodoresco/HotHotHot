@@ -253,44 +253,67 @@ function addAllEntryToHistory(arr) {
 /* Graphic usign Chart.js */
 
 function createGraph(){
-    let ctx = document.getElementById("graph").getContext("2d")
-    return new Chart(ctx);
-}
-
-function graphHistory(Graph){
-    let TableHistory = getTempArray();
-    console.log(TableHistory);
-
-    let data = {
-        labels : [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
-        datasets: [
-            {
-                label : 'Extérieur',
-                backgroundColor : '#ff0000',
-                data: []
-            },
-            {
-                label: 'Intérieur',
-                backgroundColor : '#0033ff',
-                data: []
-            }
-        ]
-    }
+    let ctx = document.getElementById("graph").getContext("2d");
     let options = {
         scales: {
-            y:
-            {
-                suggestedMin: -5,
-                suggestedMax: 35
-            }
+            yAxes:
+                {
+                    suggestedMin: -5,
+                    suggestedMax: 35
+                },
+            xAxes:
+                {
+                    labels : [0, 1],
+                    afterDataLimits: function (axis) {
+                        axis.max += 1;
+                    }
+                }
         }
     }
     let config = {
         type: 'line',
-        data : data,
         options: options
     }
-    Graph.config = config;
-    Graph.options = options;
+    return new Chart(ctx, config);
+}
+
+function removeDataGraph(Graph){
+    Graph.data.datasets.forEach((Data) => {
+        Data.data.pop();
+    });
+    Graph.update();
+}
+
+function graphHistory(Graph){
+    let TableHistory = getTempArray();
+    sortByDate(TableHistory);
+
+    let DataInt = [];
+    let DataExt = [];
+
+    TableHistory.forEach((Temp) => {
+        if (Temp._sensor === "Intérieur"){
+            DataInt.push(Temp._val);
+        }
+        else{
+            DataExt.push(Temp._val);
+        }
+    });
+    let data = {
+        datasets: [
+            {
+                label : 'Extérieur',
+                backgroundColor : '#ff0000',
+                data: DataExt
+            },
+            {
+                label: 'Intérieur',
+                backgroundColor : '#0033ff',
+                data: DataInt
+            }
+        ]
+    }
+
     Graph.data = data;
+    Graph.update();
 }
