@@ -6,7 +6,7 @@ if ('serviceWorker' in navigator) {
 
 sortHandler();
 let graph = createGraph();
-const timer = 60000 * 0.1;
+const timer = 60000 * 0.5;
 
 getIndoorSensorValue();
 getOutdoorSensorValue();

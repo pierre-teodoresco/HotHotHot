@@ -9,8 +9,8 @@ function createGraph(){
         scales: {
             yAxes:
                 {
-                    suggestedMin: -5,
-                    suggestedMax: 35
+                    suggestedMin: 10,
+                    suggestedMax: 20
                 }
         }
     }

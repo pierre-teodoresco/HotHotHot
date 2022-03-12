@@ -18,4 +18,5 @@ socket.onmessage = function(event) {
 	let valIndoor = json.capteurs[0].Valeur;
 	alertIndoorSensors(valIndoor);
 	addEntryToHistory(new Temperature(valIndoor, 'Intérieur', new Date()), true);
+	graphHistory(graph);
 };
