@@ -23,7 +23,7 @@ getOutdoorSensorValue();
 
 sortHandler();
 let graph = createGraph();
-const timer = 60000 * 0.5;
+const timer = 60000 * 0.1;
 
 outdoorInterval = setInterval(getOutdoorSensorValue, timer);
 indoorInterval = setInterval(getIndoorSensorValue, timer);
