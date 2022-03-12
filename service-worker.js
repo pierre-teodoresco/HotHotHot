@@ -8,29 +8,26 @@
 
 // Lors de l'installation de la PWA, charger les ressources puis les mettre en cache
 
-self.addEventListener('install', (e) => {
+self.addEventListener('install', e => {
     e.waitUntil(
-        caches.open('HotHotHot').then((cache) => cache.addAll([
-            "index.html",
-            "scripts/",
-            "service-worker.js",
-            "css/",
-            "images/",
-            "node_modules/",
-            "manifest.webmanifest",
-            "package.json",
-            "package-lock.json"
-        ])) // à adapter à l'URL du projet
+        caches.open('HotHotHot').then(cache => {
+            cache.addAll([
+                "index.html",
+                "scripts/",
+                "css/",
+                "images/",
+                "node_modules/"
+            ]);
+        })// à adapter à l'URL du projet
     );
 });
 
 self.addEventListener('fetch', function(event) {
-    event.respondWith(
+    return event.respondWith(
         caches.open('HotHotHot').then(function(cache) {
             return cache.match(event.request).then(function (response) {
                 return response || fetch(event.request).then(function(response) {
-                    cache.put(event.request, response.clone());
-                    return response;
+                    cache.put(event.request, response.clone()).then(r => { return r; });
                 });
             });
         })

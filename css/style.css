@@ -8,6 +8,27 @@
     }
 }
 
+.page-navigation-bar {
+    display: inline;
+}
+
+.custom-btn {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.custom-btn:focus {
+    background-color: rgba(0,0,0,0.10);
+}
+
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 section {
     display: none;
 }
@@ -27,3 +48,7 @@ section.active {
     }
 }
 
+.p-card {
+    padding: 10px;
+    border: 1px solid transparent;
+}

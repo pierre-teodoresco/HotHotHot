@@ -1,4 +1,4 @@
-function getOutdoorSensorValue() {
+    function getOutdoorSensorValue() {
     fetch("https://hothothot.dog/api/capteurs/exterieur").then(function(data) {
         data.json().then(function(json) {
             let val = json.capteurs[0].Valeur;

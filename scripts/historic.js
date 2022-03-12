@@ -20,11 +20,8 @@ function addEntryToHistory(temp, needSorting) {
 }
 
 function clearHistory() {
-    let row = document.querySelectorAll('td');
-    for (let i = 0; i < row.length; i++) {
-        if (row[i].getAttribute('class') === 'historic-title') {
-            continue;
-        }
+    let row = document.querySelectorAll('#historic tr');
+    for (let i = 1; i < row.length; i++) {
         row[i].remove();
     }
 }
@@ -230,6 +227,7 @@ function sortByDate(arr) {
 
 function sortHistory() {
     let historic = getTempArray();
+
     if (sortingState === 0) {
         sortByDate(historic, ascending);
     } else if (sortingState === 1) {
