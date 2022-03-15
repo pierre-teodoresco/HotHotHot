@@ -2,22 +2,169 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>HotHotHot</title>
 </head>
+
 <body>
-    <nav>
-        <a href="#sensors">sensors</a>
-        <a href="#historic">historic</a>
-    </nav>
-    <main id="app">
-        <section id="sensors">
-            sensors
+
+<nav class="nav-extended">
+    <div class="nav-wrapper">
+        <div>
+            <img src="images/hot-dog.png" alt="logo" class="brand-logo" height="40" width="40" style="margin: 10px;">
+        </div>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Connexion</a></li>
+            <li><a href="#">Inscription</a></li>
+            <li><a href="#">Déconnexion</a></li>
+        </ul>
+        <div class="right show-on-medium-and-down hide-on-med-and-up" style="padding-top: 7px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ei-user.svg/1200px-Ei-user.svg.png"
+                 alt="profile"
+                 width="48"
+                 height="48">
+        </div>
+
+    </div>
+    <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a href="#sensors">Capteurs</a></li>
+            <li class="tab"><a href="#historic">Historique</a></li>
+            <li class="tab"><a href="#about">À propos</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <main id="app" class="container">
+        <section id="sensors" class="active">
+            <h2 class="center">Capteurs</h2>
+            <div class="row" style="padding-bottom: 20px;">
+                <div class="flexbox">
+                    <div class="col l6 s12 card no-padding" style="margin: 10px; max-width: 350px">
+                        <div class="center-align">
+                            <h4>Extérieur</h4>
+                            <h1><span id="out-temp"></span>°C</h1>
+                            <h5>Min: <span id="min-temp-out"></span> | Max: <span id="max-temp-out"></span></h5>
+                        </div>
+                    </div>
+                    <div class="col l6 s12 card no-padding" style="margin: 10px; max-width: 350px">
+                        <div class="center-align">
+                            <h4>Intérieur</h4>
+                            <h1><span id="in-temp"></span>°C</h1>
+                            <h5>Min: <span id="min-temp-in"></span> | Max: <span id="max-temp-in"></span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
         <section id="historic">
-            historic
+            <h2 class="center">Historique</h2>
+            <table class="striped" style="margin-bottom: 20px">
+                <tbody>
+                <tr id="table-title-row">
+                    <td class="historic-title">
+                        <div id="table-temp-row">
+                            <a href="#" id="link-temp-sort">TEMPERATURE</a>
+                            <img src="" id="svg-temp" alt="">
+                        </div>
+                    </td>
+                    <td class="historic-title">
+                        <div id="table-lieu-row">
+                            <a href="#" id="link-sensor-sort">CAPTEUR</a>
+                            <img src="" id="svg-sensor" alt="">
+                        </div>
+                    </td>
+                    <td class="historic-title">
+                        <div id="table-date-row">
+                            <a href="#" id="link-date-sort">DATE</a>
+                            <img src="" id="svg-date" alt="">
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="container center">
+                <div id="page-navbar" class="page-navigation-bar">
+                    <p>Page <span id="current-page">1</span> sur <span id="total-pages">1</span></p>
+                    <button class="custom-btn hiddendiv" value="previous">< Précédent</button>
+                    <button class="custom-btn" value="0">1</button>
+                    <span id="page-buttons">
+                    <template id="page-button-template">
+                        <button class="custom-btn" value=""></button>
+                    </template>
+                </span>
+                    <button class="custom-btn hiddendiv" value="next">Suivant ></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="black-text center title">Acteurs du projet</h2>
+            <div class="row" style="padding-bottom: 20px;">
+                <div class="col l4 m6 s12">
+                    <div class="center-align">
+                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                             style="border-radius: 50%;">
+                        <h4>MOOREIRA-DE-JESUS Martin</h4>
+                        <h5>Scrum Master</h5>
+                    </div>
+                </div>
+                <div class="col l4 m6 s12">
+                    <div class="center-align">
+                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                             style="border-radius: 50%;">
+                        <h4>SYMPHORIEN Mathieu</h4>
+                        <h5>Product owner</h5>
+                    </div>
+                </div>
+                <div class="col l4 m6 s12">
+                    <div class="center-align">
+                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                             style="border-radius: 50%;">
+                        <h4>TEODORESCO Pierre</h4>
+                        <h5>Dev</h5>
+                    </div>
+                </div>
+                <div class="col l4 m6 s12 push-l2">
+                    <div class="center-align">
+                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                             style="border-radius: 50%;">
+                        <h4>SEIGNOBOS Louis</h4>
+                        <h5>Dev</h5>
+                    </div>
+                </div>
+                <div class="col l4 m6 s12 push-l2 push-m3">
+                    <div class="center-align">
+                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                             style="border-radius: 50%;">
+                        <h4>WROBEL Nicolas</h4>
+                        <h5>Dev</h5>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-    <script src="index.js" type="module" defer></script>
+
+<template id="entry-template">
+    <tr class="hiddendiv">
+        <td>MEASUREMENT</td>
+        <td>PLACE</td>
+        <td>TIME</td>
+    </tr>
+</template>
+<script
+    defer
+    type="module"
+    src="index.js">
+</script>
 </body>
 </html>
