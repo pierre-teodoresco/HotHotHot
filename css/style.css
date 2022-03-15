@@ -1,0 +1,7 @@
+section {
+    display: none;
+}
+
+.active {
+    display: initial;
+}
