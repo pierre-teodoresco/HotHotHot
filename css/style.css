@@ -1,7 +1,54 @@
+@keyframes slidein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+.page-navigation-bar {
+    display: inline;
+}
+
+.custom-btn {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.custom-btn:focus {
+    background-color: rgba(0,0,0,0.10);
+}
+
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 section {
     display: none;
 }
 
 .active {
     display: initial;
+}
+
+section.active {
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+@media (min-width: 993px) {
+    .sidenav-trigger {
+        display: none;
+    }
+}
+
+.p-card {
+    padding: 10px;
+    border: 1px solid transparent;
 }

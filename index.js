@@ -1,5 +1,5 @@
-import AppNavigation from "./lib/AppNavigation.js";
-import NavBar from "./lib/NavBar.js";
+import AppNavigation from "./lib/Observers/AppNavigation.js";
+import NavBar from "./lib/Subjects/NavBar.js";
 
 const navBar = new NavBar();
 const navigation = new AppNavigation();
