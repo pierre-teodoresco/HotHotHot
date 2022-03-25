@@ -45,116 +45,116 @@
     </div>
 </nav>
 
-    <main id="app" class="container">
-        <section id="sensors" class="active">
-            <h2 class="center">Capteurs</h2>
-            <div class="row" style="padding-bottom: 20px;">
-                <div class="flexbox">
-                    <div class="col l6 s12 card no-padding" style="margin: 10px; max-width: 350px">
-                        <div class="center-align">
-                            <h4>Extérieur</h4>
-                            <h1><span id="out-temp"></span>°C</h1>
-                            <h5>Min: <span id="min-temp-out"></span> | Max: <span id="max-temp-out"></span></h5>
-                        </div>
+<main id="app" class="container">
+    <section id="sensors" class="active">
+        <h2 class="center">Capteurs</h2>
+        <div class="row" style="padding-bottom: 20px;">
+            <div class="flexbox">
+                <div class="col l6 s12 card no-padding" style="margin: 10px; max-width: 350px">
+                    <div class="center-align">
+                        <h4>Extérieur</h4>
+                        <h1><span id="out-temp"></span>°C</h1>
+                        <h5>Min: <span id="min-temp-out"></span> | Max: <span id="max-temp-out"></span></h5>
                     </div>
-                    <div class="col l6 s12 card no-padding" style="margin: 10px; max-width: 350px">
-                        <div class="center-align">
-                            <h4>Intérieur</h4>
-                            <h1><span id="in-temp"></span>°C</h1>
-                            <h5>Min: <span id="min-temp-in"></span> | Max: <span id="max-temp-in"></span></h5>
-                        </div>
+                </div>
+                <div class="col l6 s12 card no-padding" style="margin: 10px; max-width: 350px">
+                    <div class="center-align">
+                        <h4>Intérieur</h4>
+                        <h1><span id="in-temp"></span>°C</h1>
+                        <h5>Min: <span id="min-temp-in"></span> | Max: <span id="max-temp-in"></span></h5>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="historic">
-            <h2 class="center">Historique</h2>
-            <table class="striped" style="margin-bottom: 20px">
-                <tbody>
-                <tr id="table-title-row">
-                    <td class="historic-title">
-                        <div id="table-temp-row">
-                            <a href="#" id="link-temp-sort">TEMPERATURE</a>
-                            <img src="" id="svg-temp" alt="">
-                        </div>
-                    </td>
-                    <td class="historic-title">
-                        <div id="table-lieu-row">
-                            <a href="#" id="link-sensor-sort">CAPTEUR</a>
-                            <img src="" id="svg-sensor" alt="">
-                        </div>
-                    </td>
-                    <td class="historic-title">
-                        <div id="table-date-row">
-                            <a href="#" id="link-date-sort">DATE</a>
-                            <img src="" id="svg-date" alt="">
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="container center">
-                <div id="page-navbar" class="page-navigation-bar">
-                    <p>Page <span id="current-page">1</span> sur <span id="total-pages">1</span></p>
-                    <button class="custom-btn hiddendiv" value="previous">< Précédent</button>
-                    <button class="custom-btn" value="0">1</button>
-                    <span id="page-buttons">
+    <section id="historic">
+        <h2 class="center">Historique</h2>
+        <table class="striped" style="margin-bottom: 20px">
+            <tbody>
+            <tr id="table-title-row">
+                <td class="historic-title">
+                    <div id="table-temp-row">
+                        <a href="#" id="link-temp-sort">TEMPERATURE</a>
+                        <img src="" id="svg-temp" alt="">
+                    </div>
+                </td>
+                <td class="historic-title">
+                    <div id="table-lieu-row">
+                        <a href="#" id="link-sensor-sort">CAPTEUR</a>
+                        <img src="" id="svg-sensor" alt="">
+                    </div>
+                </td>
+                <td class="historic-title">
+                    <div id="table-date-row">
+                        <a href="#" id="link-date-sort">DATE</a>
+                        <img src="" id="svg-date" alt="">
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="container center">
+            <div id="page-navbar" class="page-navigation-bar">
+                <p>Page <span id="current-page">1</span> sur <span id="total-pages">1</span></p>
+                <button class="custom-btn hiddendiv" value="previous">< Précédent</button>
+                <span id="page-buttons">
+                    <button class="custom-btn" value="1">1</button>
                     <template id="page-button-template">
                         <button class="custom-btn" value=""></button>
                     </template>
                 </span>
-                    <button class="custom-btn hiddendiv" value="next">Suivant ></button>
-                </div>
+                <button class="custom-btn hiddendiv" value="next">Suivant ></button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2 class="black-text center title">Acteurs du projet</h2>
-            <div class="row" style="padding-bottom: 20px;">
-                <div class="col l4 m6 s12">
-                    <div class="center-align">
-                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
-                             style="border-radius: 50%;">
-                        <h4>MOOREIRA-DE-JESUS Martin</h4>
-                        <h5>Scrum Master</h5>
-                    </div>
-                </div>
-                <div class="col l4 m6 s12">
-                    <div class="center-align">
-                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
-                             style="border-radius: 50%;">
-                        <h4>SYMPHORIEN Mathieu</h4>
-                        <h5>Product owner</h5>
-                    </div>
-                </div>
-                <div class="col l4 m6 s12">
-                    <div class="center-align">
-                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
-                             style="border-radius: 50%;">
-                        <h4>TEODORESCO Pierre</h4>
-                        <h5>Dev</h5>
-                    </div>
-                </div>
-                <div class="col l4 m6 s12 push-l2">
-                    <div class="center-align">
-                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
-                             style="border-radius: 50%;">
-                        <h4>SEIGNOBOS Louis</h4>
-                        <h5>Dev</h5>
-                    </div>
-                </div>
-                <div class="col l4 m6 s12 push-l2 push-m3">
-                    <div class="center-align">
-                        <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
-                             style="border-radius: 50%;">
-                        <h4>WROBEL Nicolas</h4>
-                        <h5>Dev</h5>
-                    </div>
+    <section id="about">
+        <h2 class="black-text center title">Acteurs du projet</h2>
+        <div class="row" style="padding-bottom: 20px;">
+            <div class="col l4 m6 s12">
+                <div class="center-align">
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                         style="border-radius: 50%;">
+                    <h4>MOOREIRA-DE-JESUS Martin</h4>
+                    <h5>Scrum Master</h5>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="col l4 m6 s12">
+                <div class="center-align">
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                         style="border-radius: 50%;">
+                    <h4>SYMPHORIEN Mathieu</h4>
+                    <h5>Product owner</h5>
+                </div>
+            </div>
+            <div class="col l4 m6 s12">
+                <div class="center-align">
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                         style="border-radius: 50%;">
+                    <h4>TEODORESCO Pierre</h4>
+                    <h5>Dev</h5>
+                </div>
+            </div>
+            <div class="col l4 m6 s12 push-l2">
+                <div class="center-align">
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                         style="border-radius: 50%;">
+                    <h4>SEIGNOBOS Louis</h4>
+                    <h5>Dev</h5>
+                </div>
+            </div>
+            <div class="col l4 m6 s12 push-l2 push-m3">
+                <div class="center-align">
+                    <img src="images/gauge.png" alt="" class="card-image" width="128" height="128"
+                         style="border-radius: 50%;">
+                    <h4>WROBEL Nicolas</h4>
+                    <h5>Dev</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 <template id="entry-template">
     <tr> <!--class="hiddendiv" TODO-->
@@ -164,9 +164,9 @@
     </tr>
 </template>
 <script
-    defer
-    type="module"
-    src="index.js">
+        defer
+        type="module"
+        src="index.js">
 </script>
 </body>
 </html>
