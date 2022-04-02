@@ -9,6 +9,7 @@ import Sorter from "./lib/Observers/Sorter.js";
 import SortButtons from "./lib/Subjects/SortButtons.js";
 import TableEntries from "./lib/Subjects/TableEntries.js";
 import HistoricSortedCallback from "./lib/Subjects/HistoricSortedCallback.js";
+import AlertHandler from "./lib/Observers/AlertHandler.js";
 
 /*
     Subjects
@@ -19,6 +20,7 @@ const historicPageButtons = new HistoricPageButtons();
 const sortButtons = new SortButtons();
 const tableEntries = new TableEntries();
 const historicSortedCallback = new HistoricSortedCallback();
+
 /*
     Observers
  */
@@ -27,14 +29,15 @@ const sensorsDisplay = new SensorsDisplay();
 const historicDisplay = new HistoricDisplay();
 historicDisplay.callback = tableEntries;
 
+const alertHandler = new AlertHandler();
+
 const pagination = new Pagination();
 const sorter = new Sorter();
 sorter.callback = historicSortedCallback;
+
 /*
  * Binding stuff
  */
-
-
 navBar.attach(navigation);
 
 historicPageButtons.attach(pagination);
@@ -42,6 +45,7 @@ historicPageButtons.attach(pagination);
 sensors.attach(sensorsDisplay);
 sensors.attach(historicDisplay);
 sensors.attach(pagination);
+sensors.attach(alertHandler);
 
 sortButtons.attach(sorter);
 
