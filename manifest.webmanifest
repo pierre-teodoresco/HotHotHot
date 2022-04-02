@@ -1,0 +1,15 @@
+{
+    "start_url": "/HotHotHot/index.html",
+    "name": "HotHotHotAPP",
+    "short_name": "HotHotHot",
+    "description": "HotHotHot est une bonne application d indication de temperature",
+    "display": "fullscreen",
+     "icons": [
+     {
+         "src": "/HotHotHot/images/favicon/android-chrome-192x192.png",
+         "sizes": "192x192",
+         "type:": "image/png",
+         "purpose": "any"
+     }],
+     "background_color": "grey"
+}
