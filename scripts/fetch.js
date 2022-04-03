@@ -4,9 +4,22 @@
             let val = json.capteurs[0].Valeur;
             alertOutdoorSensors(val);
             addEntryToHistory(new Temperature(val, "Extérieur", new Date()), true);
+
+
+            // ecriture
+//
+//     data.json().then(function(JSON Data){
+//         localStorage.setItem("toto", JSON.stringify(JSON Data);
+//     });
+//
+//         //lecture
+//     var toto = localStorage.getItem("toto");
+//     var obj = JSON.parse(toto);
+
         });
     });
 }
+
 
 function getIndoorSensorValue() {
     fetch("https://hothothot.dog/api/capteurs/interieur").then(function(data) {
